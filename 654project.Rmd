@@ -1,0 +1,45 @@
+---
+title: "654 Project"
+author: "Geo Lee"
+date: "2023-03-03"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+divorce = read.csv("divorce_data.csv", header = T, sep = ";")
+colnames(divorce)
+```
+
+```{r}
+X = divorce[,-55] #survey questions and answers
+Y = divorce[,55] #divorce (1) or not (0)
+
+#is our data well-balanced?
+table(Y)
+```
+
+Our data seems pretty balanced, so our classification model shouldn't be biased.
+
+```{r}
+dim(divorce)
+```
+
+```{r}
+#checking for missing data
+anyNA(divorce)
+```
+
+```{r}
+#determining highly correlated features
+library(caret)
+findCorrelation(cor(X), 0.80, names = TRUE)
+```
+
+```{r}
+
+```
+
